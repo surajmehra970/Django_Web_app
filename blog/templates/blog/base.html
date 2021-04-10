@@ -32,8 +32,13 @@
 	        </div>
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
-	          <a class="nav-item nav-link" href="#">Login</a>
-	          <a class="nav-item nav-link" href="#">Register</a>
+	        	{% if user.is_authenticated %}
+	        		<h6 style="padding-top: .7rem">{{user.username}}</h6>
+	        		<a class="nav-item nav-link" href="{% url 'logout'%}">Log Out</a>
+	        	{% else %}
+			        <a class="nav-item nav-link" href="{% url 'login'%}">Login</a>
+			        <a class="nav-item nav-link" href="{% url 'register'%}">Register</a>
+		        {% endif %}
 	        </div>
 	      </div>
 	    </div>
@@ -50,7 +55,6 @@
 	    		{% endfor %}
 	    	{% endif %}
 	      {% block content %}{% endblock %}
-	    	}
 	    </div>
 	    <div class="col-md-4">
 	      <div class="content-section">
