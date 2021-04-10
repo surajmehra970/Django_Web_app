@@ -33,7 +33,9 @@
 	        <!-- Navbar Right Side -->
 	        <div class="navbar-nav">
 	        	{% if user.is_authenticated %}
-	        		<h6 style="padding-top: .7rem">{{user.username}}</h6>
+	        		<a class="nav-item nav-link" href="{% url 'profile' %}">
+	        			{{user.username}}
+	        		</a>
 	        		<a class="nav-item nav-link" href="{% url 'logout'%}">Log Out</a>
 	        	{% else %}
 			        <a class="nav-item nav-link" href="{% url 'login'%}">Login</a>
